@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  --glass: rgba(255, 255, 255, 0.075);
+  --glass-strong: rgba(255, 255, 255, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #090414;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+button,
+a {
+  cursor: none;
+}
+
+button {
+  font: inherit;
+}
+
+.aurora {
+  background:
+    conic-gradient(from 210deg at 50% 50%, transparent 0 10%, rgba(255, 122, 182, 0.16), transparent 31% 44%, rgba(116, 215, 255, 0.12), transparent 61%, rgba(176, 107, 255, 0.17), transparent 86% 100%);
+  filter: blur(52px);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.particle {
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
+  animation: particleFloat 8s ease-in-out infinite;
+}
+
+.custom-cursor {
+  position: fixed;
+  z-index: 9999;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  margin-top: -14px;
+  border: 1px solid rgba(255, 245, 251, 0.62);
+  border-radius: 999px;
+  box-shadow: 0 0 28px rgba(255, 122, 182, 0.52);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.glass-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.055));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(26px);
+}
+
+.glass-card::before,
+.confession-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transform: translateX(-120%);
+  transition: transform 0.8s ease;
+}
+
+.glass-card:hover::before,
+.confession-card:hover::before {
+  transform: translateX(120%);
+}
+
+.premium-button,
+.soft-button {
+  display: inline-flex;
+  min-height: 56px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  padding: 0 26px;
+  font-weight: 800;
+  outline: none;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.premium-button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(90deg, #ff7ab6, #b06bff, #74d7ff, #ff7ab6);
+  background-size: 220% 100%;
+  color: white;
+  box-shadow: 0 0 52px rgba(255, 122, 182, 0.34);
+  animation: shimmer 4s linear infinite;
+}
+
+.soft-button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+}
+
+.premium-button:hover,
+.soft-button:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.premium-button:focus-visible,
+.soft-button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(255, 122, 182, 0.32);
+}
+
+.loader-ring {
+  width: 92px;
+  height: 92px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle, #090414 54%, transparent 55%),
+    conic-gradient(from 0deg, #ff7ab6, #b06bff, #74d7ff, #ff7ab6);
+  filter: drop-shadow(0 0 38px rgba(255, 122, 182, 0.45));
+  animation: spin 1.2s linear infinite;
+}
+
+.timeline-item {
+  position: relative;
+  margin-left: 24px;
+  padding-bottom: 34px;
+  padding-left: 34px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 7px;
+  top: 18px;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(255, 122, 182, 0.9), rgba(116, 215, 255, 0.1));
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 18px;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  background: #ff7ab6;
+  box-shadow: 0 0 0 8px rgba(255, 122, 182, 0.1), 0 0 28px rgba(255, 122, 182, 0.8);
+}
+
+.floating-lights::before,
+.floating-lights::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 245, 251, 0.22), transparent 66%);
+  filter: blur(4px);
+  animation: lightDrift 9s ease-in-out infinite;
+}
+
+.floating-lights::before {
+  left: 9%;
+  bottom: 18%;
+}
+
+.floating-lights::after {
+  right: 8%;
+  top: 18%;
+  animation-delay: -3s;
+}
+
+.confession-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 34px;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07)),
+    radial-gradient(circle at 10% 0%, rgba(255, 122, 182, 0.18), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(116, 215, 255, 0.14), transparent 35%);
+  box-shadow: 0 30px 120px rgba(176, 107, 255, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(30px);
+}
+
+.firework {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, white 0 2px, transparent 3px),
+    radial-gradient(circle, #ff7ab6 0 2px, transparent 3px),
+    radial-gradient(circle, #74d7ff 0 2px, transparent 3px);
+  background-size: 28px 28px, 36px 36px, 44px 44px;
+  filter: drop-shadow(0 0 24px rgba(255, 122, 182, 0.75));
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-4%, -2%, 0) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translate3d(4%, 2%, 0) rotate(18deg) scale(1.08);
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate3d(18px, -42px, 0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes lightDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.34;
+  }
+  50% {
+    transform: translate3d(20px, -32px, 0) scale(1.18);
+    opacity: 0.72;
+  }
+}
+
+@media (max-width: 640px) {
+  button,
+  a {
+    cursor: pointer;
+  }
+
+  .glass-card {
+    border-radius: 20px;
+  }
+
+  .confession-card {
+    border-radius: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
